@@ -1,0 +1,29 @@
+.App {
+  font-family: "Noto Sans TC", sans-serif;
+  text-align: center;
+}
+/* @import "~bootstrap/scss/bootstrap"; */
+.appCustom {
+  /* background: url("/img/blue-universe-956981.jpg") no-repeat; */
+  /* background-size: 100% 30%; */
+  /* border-radius: 50% */
+  position: relative;
+  /* overflow: hidden; */
+}
+.appCustom::after {
+  content: "";
+  width: 130%;
+  height: 35%;
+  background: green;
+  position: absolute;
+  top: -110px;
+  left: -15%;
+
+  border: 20px solid transparent;
+  /* border-bottom: 40px solid t; */
+  border-radius: 50%;
+  /* overflow: hidden; */
+  background: url("/img/creative-internet-computer-display-2004161.jpg")
+    no-repeat;
+  z-index: -1;
+}
