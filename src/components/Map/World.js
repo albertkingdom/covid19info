@@ -6,6 +6,8 @@ import $ from "jquery";
 function WorldMap({ country }) {
   const [worlddata, setWorlddata] = useState([]);
   const [lastcountry, setLastCountry] = useState({ name: "123", color: "123" });
+
+  console.log("map country", country);
   const projection = geoEqualEarth()
     .scale(160)
     .translate([800 / 2, 450 / 2]);
@@ -87,9 +89,17 @@ function WorldMap({ country }) {
   }, [country]);
   return (
     <>
-      <p id="countryname">目前國家:</p>
+      <h5 className="my-3" id="countryname">
+        目前國家:
+      </h5>
+      <p style={{ color: "blue" }}>選取不同國家在地圖上會變藍色</p>
       <div id="map">
-        <svg width={800} height={450} viewBox="0 0 800 450">
+        <svg
+          style={{ border: "1px solid gray" }}
+          width={1000}
+          height={550}
+          viewBox="0 0 800 450"
+        >
           <g className="countries">
             {worlddata.map((d, i) => (
               <path

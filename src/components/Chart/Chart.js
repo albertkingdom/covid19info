@@ -23,13 +23,16 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
               data: dailydata.map(item => item.confirmed),
               label: "Infected",
               borderColor: "grey",
-              fill: true
+              fill: true,
+              pointBackgroundColor: "grey"
             },
             {
               data: dailydata.map(item => item.deaths),
               label: "death",
               borderColor: "red",
-              fill: true
+              fill: true,
+              pointBackgroundColor: "red",
+              backgroundColor: "#fc7272"
             }
           ]
         }}
@@ -52,12 +55,12 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
         ]
       }}
       options={{
-        legend: { display: false },
-        title: { display: true, text: `Current state in ${country}` }
+        legend: { display: false }
+        // title: { display: true, text: `Current state in ${country}` }
       }}
     />
   ) : null;
-  return <Container>{country ? barChart : linechart}</Container>;
+  return <Container>{country !== "Global" ? barChart : linechart}</Container>;
 };
 
 export default Chart;

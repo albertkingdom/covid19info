@@ -6,7 +6,9 @@ export const fetchData = async country => {
   try {
     // const response = await axios.get(url);
     let url_real = url; //如果有選country則改變url
-    if (country) {
+    console.log("fetchdata country", country);
+
+    if (country && country !== "Global") {
       url_real = `${url}/countries/${country}`;
     }
     const { data } = await axios.get(url_real);
@@ -18,6 +20,7 @@ export const fetchData = async country => {
       deaths: data.deaths,
       lastUpdate: data.lastUpdate
     };
+    console.log("fetchData", modifiedData);
     return modifiedData;
   } catch (error) {
     console.log(error);

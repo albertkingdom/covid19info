@@ -25,7 +25,7 @@ export default function App() {
   // console.log("app.js", data);
   //處理country選擇
   const handleCountryChange = async country => {
-    console.log(country);
+    console.log("handlecountrychange", country);
     const fetcheddata = await fetchData(country);
     // console.log(fetcheddata);
     setData(fetcheddata);

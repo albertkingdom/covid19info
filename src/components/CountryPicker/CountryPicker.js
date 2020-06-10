@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NativeSelect, FormControl } from "@material-ui/core";
+import { NativeSelect, FormControl, InputLabel } from "@material-ui/core";
 import { fetchcountries } from "../../api";
 
 const CountryPicker = ({ changeCountry }) => {
@@ -12,16 +12,26 @@ const CountryPicker = ({ changeCountry }) => {
     fetchAPI();
   }, []);
   return (
-    <FormControl style={{ marginTop: "200px" }}>
-      <NativeSelect onChange={e => changeCountry(e.target.value)}>
-        {fetchCountries.map((country, index) => (
-          <option key={index} value={country}>
-            {country}
-          </option>
-        ))}
-        <option value="global">Global</option>
-      </NativeSelect>
-    </FormControl>
+    <>
+      <FormControl style={{ margin: "250px 0 10px" }}>
+        <InputLabel htmlFor="my-input">Select the country</InputLabel>
+        <NativeSelect
+          onChange={e => {
+            changeCountry(e.target.value);
+            console.log("country selected is", e.target.value);
+          }}
+        >
+          <>
+            {fetchCountries.map((country, index) => (
+              <option key={index} value={country}>
+                {country}
+              </option>
+            ))}
+            <option>Global</option>
+          </>
+        </NativeSelect>
+      </FormControl>
+    </>
   );
 };
 

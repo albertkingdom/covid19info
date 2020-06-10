@@ -9,7 +9,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CountUp from "react-countup";
 const Cards = props => {
-  console.log("cards", props.data);
+  console.log("cards props", props);
   // const { confirmed, recovered } = data;
   // console.log("data.confirmed", data.confirmed);
   // console.log(recovered);
@@ -23,7 +23,10 @@ const Cards = props => {
         <Col md={4}>
           <Card className="text-center my-2">
             <Card.Header>
-              {props.country ? props.country : "全球"}確診人數
+              {props.country && props.country !== "Global"
+                ? props.country
+                : "全球"}
+              確診人數
             </Card.Header>
             <Card.Body>
               <Card.Text>
@@ -42,7 +45,10 @@ const Cards = props => {
         <Col md={4}>
           <Card className="text-center my-2">
             <Card.Header>
-              {props.country ? props.country : "全球"}復原人數
+              {props.country && props.country !== "Global"
+                ? props.country
+                : "全球"}
+              復原人數
             </Card.Header>
             <Card.Body>
               <Card.Text>
@@ -61,7 +67,10 @@ const Cards = props => {
         <Col md={4}>
           <Card className="text-center my-2">
             <Card.Header>
-              {props.country ? props.country : "全球"}死亡人數
+              {props.country && props.country !== "Global"
+                ? props.country
+                : "全球"}
+              死亡人數
             </Card.Header>
             <Card.Body>
               <Card.Text>
