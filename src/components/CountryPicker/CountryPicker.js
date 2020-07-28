@@ -17,7 +17,7 @@ const CountryPicker = ({ changeCountry }) => {
         <InputLabel htmlFor="my-input">Select the country</InputLabel>
         <NativeSelect
           onChange={e => {
-            changeCountry(e.target.value);
+            changeCountry(e.target.value.replace("*",""));
             console.log("country selected is", e.target.value);
           }}
         >

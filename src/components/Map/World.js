@@ -26,7 +26,7 @@ function WorldMap({ country }) {
       .attr("height", 500);
     function draw(mapData) {
       // 設定投影中心點與縮放倍率
-      const projection = d3.geoMercator().translate([width / 2, height / 2]);
+      const projection = d3.geoMercator().translate([1000 / 2, 1000 / 2]);
 
       // 將投影資料轉換為路徑
       const path = d3.geoPath().projection(projection);
@@ -52,11 +52,11 @@ function WorldMap({ country }) {
     }
   }, []);
   //ADD function to svg
-  const handleCountryEnter = index => {
-    // console.log('hover on',worlddata[index].properties.NAME);
-    $("#countryname").text("目前國家: " + worlddata[index].properties.NAME);
-    // $('path').attr('fill','red')
-  };
+  // const handleCountryEnter = index => {
+  //   // console.log('hover on',worlddata[index].properties.NAME);
+  //   $("#countryname").text("目前國家: " + worlddata[index].properties.NAME);
+  //   // $('path').attr('fill','red')
+  // };
   let lastpath; //save last target
   let lastpathcolor; //save last target color
   const handleClick = e => {
@@ -90,14 +90,14 @@ function WorldMap({ country }) {
   return (
     <>
       <h5 className="my-3" id="countryname">
-        目前國家:
+        {/* 目前國家: */}
       </h5>
       <p style={{ color: "blue" }}>選取不同國家在地圖上會變藍色</p>
       <div id="map">
         <svg
           style={{ border: "1px solid gray" }}
-          width={1000}
-          height={550}
+          width="1000"
+          height="550"
           viewBox="0 0 800 450"
         >
           <g className="countries">
@@ -109,7 +109,7 @@ function WorldMap({ country }) {
                 fill={`rgba(38,50,56,${(1 / worlddata.length) * i})`}
                 stroke="#FFFFFF"
                 strokeWidth={0.5}
-                onMouseEnter={() => handleCountryEnter(i)}
+                // onMouseEnter={() => handleCountryEnter(i)}
                 // onClick={e => handleClick(e)}
                 data-countryname={d.properties.NAME}
               />
