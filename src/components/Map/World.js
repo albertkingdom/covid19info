@@ -12,7 +12,7 @@ function WorldMap({ country }) {
     .scale(160)
     .translate([800 / 2, 450 / 2]);
   useEffect(() => {
-    fetch("/map/ne_110m_admin_0_countries_geojson.json")
+    fetch("map/ne_110m_admin_0_countries_geojson.json")
       // fetch("./map/test.json")
       .then(res => res.json())
       .then(data => {
