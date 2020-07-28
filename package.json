@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
+  "homepage": "https://albertkingdom.github.io/covid19info/",
   "dependencies": {
     "@material-ui/core": "4.9.12",
     "axios": "0.19.2",
@@ -11,6 +12,7 @@
     "chart.js": "2.9.3",
     "d3": "5.16.0",
     "d3-geo": "1.12.0",
+    "gh-pages": "^3.1.0",
     "jquery": "3.5.1",
     "node-sass": "4.14.0",
     "react": "16.12.0",
@@ -27,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
