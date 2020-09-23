@@ -17,24 +17,24 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
     dailydata.length !== 0 ? (
       <Line
         data={{
-          labels: dailydata.map(item => item.date),
+          labels: dailydata.map((item) => item.date),
           datasets: [
             {
-              data: dailydata.map(item => item.confirmed),
+              data: dailydata.map((item) => item.confirmed),
               label: "Infected",
               borderColor: "grey",
               fill: true,
-              pointBackgroundColor: "grey"
+              pointBackgroundColor: "grey",
             },
             {
-              data: dailydata.map(item => item.deaths),
+              data: dailydata.map((item) => item.deaths),
               label: "death",
               borderColor: "red",
               fill: true,
               pointBackgroundColor: "red",
-              backgroundColor: "#fc7272"
-            }
-          ]
+              backgroundColor: "#fc7272",
+            },
+          ],
         }}
       />
     ) : null;
@@ -48,14 +48,14 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
             backgroundColor: [
               "rgba(0, 0, 255, 0.5)",
               "rgba(0, 255, 0, 0.5)",
-              "rgba(255, 0, 0, 0.5)"
+              "rgba(255, 0, 0, 0.5)",
             ],
-            data: [confirmed.value, recovered.value, deaths.value]
-          }
-        ]
+            data: [confirmed.value, recovered.value, deaths.value],
+          },
+        ],
       }}
       options={{
-        legend: { display: false }
+        legend: { display: false },
         // title: { display: true, text: `Current state in ${country}` }
       }}
     />

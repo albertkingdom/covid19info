@@ -3,7 +3,7 @@ import { NativeSelect, FormControl, InputLabel } from "@material-ui/core";
 import { fetchcountries } from "../../api";
 
 const CountryPicker = ({ changeCountry }) => {
-  console.log(changeCountry);
+  // console.log(changeCountry);
   const [fetchCountries, setFetchCountries] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
@@ -16,9 +16,9 @@ const CountryPicker = ({ changeCountry }) => {
       <FormControl style={{ margin: "250px 0 10px" }}>
         <InputLabel htmlFor="my-input">Select the country</InputLabel>
         <NativeSelect
-          onChange={e => {
-            changeCountry(e.target.value.replace("*",""));
-            console.log("country selected is", e.target.value);
+          onChange={(e) => {
+            changeCountry(e.target.value.replace("*", ""));
+            // console.log("country selected is", e.target.value);
           }}
         >
           <>

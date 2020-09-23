@@ -8,11 +8,9 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CountUp from "react-countup";
-const Cards = props => {
-  console.log("cards props", props);
-  // const { confirmed, recovered } = data;
-  // console.log("data.confirmed", data.confirmed);
-  // console.log(recovered);
+const Cards = (props) => {
+  // console.log("cards props", props);
+
   const date = new Date(props.data.lastUpdate);
   const display = (
     <Container className={styles.cardContainer}>
