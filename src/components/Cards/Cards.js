@@ -11,78 +11,56 @@ import CountUp from "react-countup";
 const Cards = (props) => {
   // console.log("cards props", props);
 
-  const date = new Date(props.data.lastUpdate);
+  const date = new Date(props.data.lastUpdate); //更新時間
   const display = (
     <Container className={styles.cardContainer}>
       <Row>
-        {/* <div className={styles.bk}>{data.confirmed.value}</div> */}
-        {/* {data.map((item,index)=>item.value)} */}
-        {/* <div className={styles.bk}>{recovered.value}</div> */}
         <Col md={4}>
-          <Card className="text-center my-2">
-            <Card.Header>
+          <div className={styles.infoCard}>
+            <h5 className="">
               {props.country && props.country !== "Global"
                 ? props.country
                 : "全球"}
               確診人數
-            </Card.Header>
-            <Card.Body>
-              <Card.Text>
-                <CountUp
-                  start={0}
-                  end={props.data.confirmed.value}
-                  separator=","
-                />
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-muted">
-              更新時間:{date.toLocaleString()}
-            </Card.Footer>
-          </Card>
+            </h5>
+            <div className={styles.digit}>
+              <CountUp
+                start={0}
+                end={props.data.confirmed.value}
+                separator=","
+              />
+            </div>
+          </div>
         </Col>
         <Col md={4}>
-          <Card className="text-center my-2">
-            <Card.Header>
+          <div className={styles.infoCard}>
+            <h5 className="">
               {props.country && props.country !== "Global"
                 ? props.country
                 : "全球"}
               復原人數
-            </Card.Header>
-            <Card.Body>
-              <Card.Text>
-                <CountUp
-                  start={0}
-                  end={props.data.recovered.value}
-                  separator=","
-                />
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-muted">
-              更新時間:{date.toLocaleString()}
-            </Card.Footer>
-          </Card>
+            </h5>
+            <div className={styles.digit}>
+              <CountUp
+                start={0}
+                end={props.data.recovered.value}
+                separator=","
+              />
+            </div>
+          </div>
         </Col>
         <Col md={4}>
-          <Card className="text-center my-2">
-            <Card.Header>
+          <div className={styles.infoCard}>
+            <h5 className="">
               {props.country && props.country !== "Global"
                 ? props.country
                 : "全球"}
               死亡人數
-            </Card.Header>
-            <Card.Body>
-              <Card.Text>
-                <CountUp
-                  start={0}
-                  end={props.data.deaths.value}
-                  separator=","
-                />
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-muted">
-              更新時間:{date.toLocaleString()}
-            </Card.Footer>
-          </Card>
+            </h5>
+            <div className={styles.digit}>
+              <CountUp start={0} end={props.data.deaths.value} separator="," />
+            </div>
+          </div>
         </Col>
       </Row>
     </Container>

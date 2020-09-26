@@ -64,19 +64,23 @@ export default function App() {
   };
   return (
     <div className="App appCustom">
-      <h2 className="text-uppercase my-4 text-white">Covid19 live info demo</h2>
+      <div className="appBackground" />
+      <h2 className="text-uppercase mb-4 py-4 text-white">
+        Covid19 live info demo
+      </h2>
       <h6 className="text-white">
         The COVID-19 API is from<span> </span>
         <a className="text-white" href="https://covid19.mathdro.id/api">
           https://covid19.mathdro.id/api
         </a>
       </h6>
+      <CountryPicker changeCountry={handleCountryChange} />
       {isloading ? (
         <div>Loading...</div>
       ) : (
         <Cards data={data} country={country} />
       )}
-      <CountryPicker changeCountry={handleCountryChange} />
+
       <Chart data={data} country={country} />
       {/* <World country={country} /> */}
 

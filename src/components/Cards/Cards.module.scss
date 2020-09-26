@@ -1,6 +1,26 @@
-.bk{
+.bk {
   background: skyblue;
 }
-.cardContainer{
-  margin-top: 100px;
+.cardContainer {
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+.infoCard {
+  height: 200px;
+  width: 100%;
+  background-color: blue;
+  border-radius: 25px;
+  background-color: #fff;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.infoCard h5 {
+  height: 20%;
+  padding: 10px 0;
+}
+.infoCard .digit {
+  font-size: 40px;
 }
