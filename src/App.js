@@ -69,9 +69,9 @@ export default function App() {
         Covid19 live info demo
       </h2>
       <h6 className="text-white">
-        The COVID-19 API is from<span> </span>
-        <a className="text-white" href="https://covid19.mathdro.id/api">
-          https://covid19.mathdro.id/api
+        The COVID-19 info API is from<span> </span>
+        <a className="text-white" href="https://github.com/disease-sh/API">
+        github.com/NovelCOVID/API
         </a>
       </h6>
       <CountryPicker changeCountry={handleCountryChange} />

@@ -4,30 +4,38 @@ import { Line, Bar } from "react-chartjs-2";
 import Container from "react-bootstrap/Container";
 
 const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
-  const [dailydata, setDailyData] = useState([]);
+  const [dailydata, setDailyData] = useState();
   useEffect(() => {
     const dailyrate = async () => {
       setDailyData(await fetchDailyData());
     };
-    // console.log(dailydata);
+    
     dailyrate();
+   
+    
+
   }, []);
 
   const linechart =
-    dailydata.length !== 0 ? (
+    dailydata ? (
       <Line
         data={{
-          labels: dailydata.map((item) => item.date),
+          // labels: dailydata.map((item) => item.date),
+          labels: Object.keys(dailydata.confirmed),
           datasets: [
             {
-              data: dailydata.map((item) => item.confirmed),
+              // data: dailydata.map((item) => item.confirmed),
+              data: Object.values(dailydata.confirmed),
+
               label: "Infected",
               borderColor: "grey",
               fill: true,
               pointBackgroundColor: "grey",
             },
             {
-              data: dailydata.map((item) => item.deaths),
+              // data: dailydata.map((item) => item.deaths),
+              data: Object.values(dailydata.deaths),
+
               label: "death",
               borderColor: "red",
               fill: true,

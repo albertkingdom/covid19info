@@ -15,16 +15,16 @@ const CountryPicker = ({ changeCountry }) => {
   return (
     <>
       <form>
-        <div class="form-row justify-content-center my-4">
+        <div className="form-row justify-content-center my-4">
           {/* <label for="">123</label> */}
           <div className="col-10 col-lg-2">
             <select
-              class="form-control"
+              className="form-control"
               name=""
               id=""
               onChange={(e) => changeCountry(e.target.value)}
             >
-              <option selected>Global</option>
+              <option defaultValue>Global</option>
               {fetchCountries.map((country, index) => (
                 <option key={index} value={country}>
                   {country}

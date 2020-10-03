@@ -18,7 +18,7 @@ const LeafletMap = ({ location, countrySelect }) => {
   const mapRef = useRef(null);
   const onEachCountry = (country, layer, countrySelect) => {
     const countryName = country.properties.name;
-    console.log("countryName includes?", countryName.includes(countrySelect));
+    // console.log("countryName includes?", countryName.includes(countrySelect));
 
     layer.bindPopup(countryName); //觸發顯示國家名
 
@@ -30,7 +30,7 @@ const LeafletMap = ({ location, countrySelect }) => {
 
     layer.on({
       click: (event) => {
-        console.log("click", event.target);
+        // console.log("click", event.target);
 
         const map = mapRef.current.leafletElement;
         // console.log(mapRef);
@@ -46,6 +46,7 @@ const LeafletMap = ({ location, countrySelect }) => {
 
   return (
     <>
+    <h5 style={{marginTop:'25px'}}>WHERE IS THE COUNTRY?</h5>
       <Map
         center={center}
         zoom={3}
