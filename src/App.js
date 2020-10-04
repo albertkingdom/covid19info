@@ -63,7 +63,7 @@ export default function App() {
       : handleIfSelectCountry(country);
   };
   return (
-    <div className="App appCustom">
+    <div className="App appCustom" data-test="appCustom">
       <div className="appBackground" />
       <h2 className="text-uppercase mb-4 py-4 text-white">
         Covid19 live info demo
@@ -71,7 +71,7 @@ export default function App() {
       <h6 className="text-white">
         The COVID-19 info API is from<span> </span>
         <a className="text-white" href="https://github.com/disease-sh/API">
-        github.com/NovelCOVID/API
+          github.com/NovelCOVID/API
         </a>
       </h6>
       <CountryPicker changeCountry={handleCountryChange} />

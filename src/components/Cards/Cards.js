@@ -16,7 +16,7 @@ const Cards = (props) => {
     <Container className={styles.cardContainer}>
       <Row>
         <Col md={4}>
-          <div className={styles.infoCard}>
+          <div className={styles.infoCard} data-test="casesCount">
             <h5 className="">
               {props.country && props.country !== "Global"
                 ? props.country
@@ -33,7 +33,7 @@ const Cards = (props) => {
           </div>
         </Col>
         <Col md={4}>
-          <div className={styles.infoCard}>
+          <div className={styles.infoCard} data-test="casesCount">
             <h5 className="">
               {props.country && props.country !== "Global"
                 ? props.country
@@ -50,7 +50,7 @@ const Cards = (props) => {
           </div>
         </Col>
         <Col md={4}>
-          <div className={styles.infoCard}>
+          <div className={styles.infoCard} data-test="casesCount">
             <h5 className="">
               {props.country && props.country !== "Global"
                 ? props.country
