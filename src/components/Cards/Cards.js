@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CountUp from "react-countup";
+import PropTypes from "prop-types";
 const Cards = (props) => {
   // console.log("cards props", props);
 
@@ -67,5 +68,13 @@ const Cards = (props) => {
   );
   return display;
 };
-
+//props型別檢查
+Cards.propTypes = {
+  country: PropTypes.string,
+  data: PropTypes.shape({
+    confirmed: PropTypes.object,
+    deaths: PropTypes.object,
+    recovered: PropTypes.object,
+  }),
+};
 export default Cards;
