@@ -33,7 +33,7 @@ describe("Card component", () => {
     };
     const component = shallow(<Cards {...props} />);
     const namecard = findByTestAttr(component, "casesCount");
-    expect(namecard.length).toBe(3);
+    expect(namecard.length).toEqual(3);
   });
   // test for 型別檢查
   describe("checking PropTypes", () => {

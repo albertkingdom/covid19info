@@ -6,6 +6,7 @@ import {
   fetchData,
   fetchHistoryData,
   fetchIndividualCountriesData,
+  fetchCountriesName,
 } from "./api";
 import LeafletMap from "./components/Map/LeafletMap";
 export default function App() {
@@ -16,14 +17,17 @@ export default function App() {
   const [allCountryData, setAllCountryData] = useState(); //存所有國家資料
   const [globalData, setGlobalData] = useState(); //存全球資料
   const [historyData, setHistoryData] = useState();
+  const [countryNames, setCountryNames] = useState();
   async function getGlobalData() {
     const fetcheddata = await fetchData();
     const globalHistoryData = await fetchHistoryData(); //歷史資料
     const individualcountrydata = await fetchIndividualCountriesData(); //individual country data
+    const names = await fetchCountriesName();
     setGlobalData(fetcheddata);
     setData(fetcheddata);
     setHistoryData(globalHistoryData);
     setAllCountryData(individualcountrydata);
+    setCountryNames(names);
     setIsloading(false);
   }
 
@@ -71,7 +75,10 @@ export default function App() {
           github.com/NovelCOVID/API
         </a>
       </h6>
-      <CountryPicker changeCountry={handleCountryChange} />
+      <CountryPicker
+        changeCountry={handleCountryChange}
+        countryNames={countryNames}
+      />
       {isloading ? (
         <div>Loading...</div>
       ) : (
