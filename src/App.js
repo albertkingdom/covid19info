@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 import { Cards, Chart, CountryPicker } from "./components";
-import { fetchData } from "./api";
+import {
+  fetchData,
+  fetchHistoryData,
+  fetchIndividualCountriesData,
+} from "./api";
 import LeafletMap from "./components/Map/LeafletMap";
 export default function App() {
   const [data, setData] = useState({}); //傳給子元件的資料
@@ -11,25 +15,18 @@ export default function App() {
   const [location, setLocation] = useState(null); //經緯度
   const [allCountryData, setAllCountryData] = useState(); //存所有國家資料
   const [globalData, setGlobalData] = useState(); //存全球資料
+  const [historyData, setHistoryData] = useState();
   async function getGlobalData() {
     const fetcheddata = await fetchData();
-
+    const globalHistoryData = await fetchHistoryData(); //歷史資料
+    const individualcountrydata = await fetchIndividualCountriesData(); //individual country data
     setGlobalData(fetcheddata);
     setData(fetcheddata);
+    setHistoryData(globalHistoryData);
+    setAllCountryData(individualcountrydata);
     setIsloading(false);
   }
-  const fetchAllCountryData = () => {
-    //所有國家資料
-    let url = "https://corona.lmao.ninja/v2/countries?yesterday=false&sort";
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("all country", data);
-
-        setAllCountryData(data);
-      });
-  };
   const handleIfSelectCountry = (country) => {
     const filteredCountryData = allCountryData.filter(
       (item) => item.country === country || item.country.includes(country)
@@ -52,7 +49,6 @@ export default function App() {
   useEffect(() => {
     setCountry("Global");
     getGlobalData();
-    fetchAllCountryData();
   }, []);
 
   //處理country選擇
@@ -62,6 +58,7 @@ export default function App() {
       ? handleIfSelectGlobal()
       : handleIfSelectCountry(country);
   };
+
   return (
     <div className="App appCustom" data-test="appCustom">
       <div className="appBackground" />
@@ -81,7 +78,7 @@ export default function App() {
         <Cards data={data} country={country} />
       )}
 
-      <Chart data={data} country={country} />
+      <Chart data={data} country={country} historyData={historyData} />
       {/* <World country={country} /> */}
 
       <LeafletMap countrySelect={country} location={location} />

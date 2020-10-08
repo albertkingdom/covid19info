@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { NativeSelect, FormControl, InputLabel } from "@material-ui/core";
-import { fetchcountries } from "../../api";
+import { fetchCountriesName } from "../../api";
 
 const CountryPicker = ({ changeCountry }) => {
   // console.log(changeCountry);
@@ -8,7 +8,7 @@ const CountryPicker = ({ changeCountry }) => {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      setFetchCountries(await fetchcountries());
+      setFetchCountries(await fetchCountriesName());
     };
     fetchAPI();
   }, []);

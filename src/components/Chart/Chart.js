@@ -1,51 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { fetchDailyData } from "../../api";
 import { Line, Bar } from "react-chartjs-2";
 import Container from "react-bootstrap/Container";
 
-const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
-  const [dailydata, setDailyData] = useState();
-  useEffect(() => {
-    const dailyrate = async () => {
-      setDailyData(await fetchDailyData());
-    };
-    
-    dailyrate();
-   
-    
+const Chart = ({
+  data: { confirmed, recovered, deaths },
+  country,
+  historyData,
+}) => {
+  const linechart = historyData ? (
+    <Line
+      data={{
+        // labels: dailydata.map((item) => item.date),
+        labels: Object.keys(historyData.confirmed),
+        datasets: [
+          {
+            // data: dailydata.map((item) => item.confirmed),
+            data: Object.values(historyData.confirmed),
 
-  }, []);
+            label: "Infected",
+            borderColor: "grey",
+            fill: true,
+            pointBackgroundColor: "grey",
+          },
+          {
+            // data: dailydata.map((item) => item.deaths),
+            data: Object.values(historyData.deaths),
 
-  const linechart =
-    dailydata ? (
-      <Line
-        data={{
-          // labels: dailydata.map((item) => item.date),
-          labels: Object.keys(dailydata.confirmed),
-          datasets: [
-            {
-              // data: dailydata.map((item) => item.confirmed),
-              data: Object.values(dailydata.confirmed),
-
-              label: "Infected",
-              borderColor: "grey",
-              fill: true,
-              pointBackgroundColor: "grey",
-            },
-            {
-              // data: dailydata.map((item) => item.deaths),
-              data: Object.values(dailydata.deaths),
-
-              label: "death",
-              borderColor: "red",
-              fill: true,
-              pointBackgroundColor: "red",
-              backgroundColor: "#fc7272",
-            },
-          ],
-        }}
-      />
-    ) : null;
+            label: "death",
+            borderColor: "red",
+            fill: true,
+            pointBackgroundColor: "red",
+            backgroundColor: "#fc7272",
+          },
+        ],
+      }}
+      data-test="linePlot"
+    />
+  ) : null;
   const barChart = confirmed ? (
     <Bar
       data={{
