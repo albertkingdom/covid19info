@@ -2,21 +2,11 @@ import axios from "axios";
 
 // const url = "https://covid19.mathdro.id/api";
 
-export const fetchData = async (country) => {
+export const fetchData = async () => {
   const url = "https://corona.lmao.ninja/v2/all?yesterday";
 
   try {
-    // const response = await axios.get(url);
-    let url_real = url; //如果有選country則改變url
-    // console.log("fetchdata country", country);
-
-    if (country && country !== "Global") {
-      url_real = `${url}/countries/${country}`;
-    }
-    const { data } = await axios.get(url_real);
-    // const data = await axios.get(url_real)
-    // console.log('fetchData',data)
-    // const data = response.json();
+    const { data } = await axios.get(url);
 
     const modifiedData = {
       confirmed: { value: data.cases },
