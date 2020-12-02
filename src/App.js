@@ -79,16 +79,22 @@ export default function App() {
         changeCountry={handleCountryChange}
         countryNames={countryNames}
       />
+
       {isloading ? (
         <div>Loading...</div>
       ) : (
         <Cards data={data} country={country} />
       )}
+      <main className="row">
+        <div className="col-12 col-md-6">
+          <Chart data={data} country={country} historyData={historyData} />
+        </div>
 
-      <Chart data={data} country={country} historyData={historyData} />
-      {/* <World country={country} /> */}
-
-      <LeafletMap countrySelect={country} location={location} />
+        {/* <World country={country} /> */}
+        <div className="col-12 col-md-6">
+          <LeafletMap countrySelect={country} location={location} />
+        </div>
+      </main>
     </div>
   );
 }
