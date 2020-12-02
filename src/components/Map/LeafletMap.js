@@ -45,12 +45,12 @@ const LeafletMap = ({ location, countrySelect }) => {
   };
 
   return (
-    <>
-    <h5 style={{marginTop:'25px'}}>WHERE IS THE COUNTRY?</h5>
+    <div className="container">
+      <h5 style={{ marginTop: "25px" }}>WHERE IS THE COUNTRY?</h5>
       <Map
         center={center}
         zoom={3}
-        style={{ width: "50vw", height: "500px", margin: "50px auto" }}
+        style={{ width: "100%", height: "300px", margin: "10px" }}
         ref={mapRef}
       >
         <TileLayer
@@ -64,7 +64,7 @@ const LeafletMap = ({ location, countrySelect }) => {
         />
         <Marker position={center} />
       </Map>
-    </>
+    </div>
   );
 };
 
