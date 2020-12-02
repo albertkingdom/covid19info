@@ -1,4 +1,4 @@
-import { shallow, mount } from "enzyme";
+import { render, screen } from '@testing-library/react'
 import React from "react";
 import Chart from "./Chart";
 
@@ -19,8 +19,10 @@ describe("Chart component testing", () => {
         },
       },
     };
-    const wrapper = shallow(<Chart {...props} />);
-    expect(wrapper.length).toBe(1);
+  
+    render(<Chart {...props} />)
+ 
+    // screen.debug()
   });
 
   it("render a Line plot in Chart component", () => {
@@ -40,10 +42,8 @@ describe("Chart component testing", () => {
       },
     };
 
-    const chartcomponent = shallow(<Chart {...props} />);
-    console.log(chartcomponent.debug()); //show html
 
-    const linePlot = chartcomponent.find('[data-test="linePlot"]');
-    expect(linePlot.length).toBe(1);
+    render(<Chart {...props} />)
+
   });
 });

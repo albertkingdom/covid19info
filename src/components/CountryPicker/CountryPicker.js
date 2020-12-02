@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { NativeSelect, FormControl, InputLabel } from "@material-ui/core";
 // import { fetchCountriesName } from "../../api";
 
-const CountryPicker = ({ changeCountry, countryNames }) => {
+const CountryPicker = ({ changeCountry, countryNames, country }) => {
   return (
     <>
       <form>
@@ -14,6 +14,7 @@ const CountryPicker = ({ changeCountry, countryNames }) => {
               name=""
               id=""
               onChange={(e) => changeCountry(e.target.value)}
+              value={country}
             >
               <option defaultValue>Global</option>
               {countryNames

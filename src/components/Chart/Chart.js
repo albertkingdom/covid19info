@@ -35,8 +35,8 @@ const Chart = ({
         ],
       }}
       data-test="linePlot"
-      height="50"
-      width="100%"
+      height={40}
+      width={50}
     />
   ) : null;
   const barChart = confirmed ? (
@@ -59,8 +59,8 @@ const Chart = ({
         legend: { display: false },
         // title: { display: true, text: `Current state in ${country}` }
       }}
-      height="50"
-      width="100%"
+      height={40}
+      width={50}
     />
   ) : null;
   return <Container>{country !== "Global" ? barChart : linechart}</Container>;

@@ -78,6 +78,7 @@ export default function App() {
       <CountryPicker
         changeCountry={handleCountryChange}
         countryNames={countryNames}
+        country={country}
       />
 
       {isloading ? (
