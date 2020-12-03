@@ -1,19 +1,13 @@
 import React from "react";
-import { shallow } from "enzyme";
+import {  render, screen } from "@testing-library/react";
+
 import Cards from "./Cards";
 import checkPropTypes from "check-prop-types";
-const findByTestAttr = (component, attr) => {
-  return component.find(`[data-test='${attr}']`);
-};
+
 //test: how many target you want to test is rendered in the Cards component
 // you  have to give required props to the Cards component
 describe("Card component", () => {
-  // let component
-  // beforeEach(()=>{
-  //     const props = {
-  //         country:'test country'
-  //     }
-  // })
+ 
 
   it("should render 3 cards", () => {
     const props = {
@@ -31,10 +25,14 @@ describe("Card component", () => {
         },
       },
     };
-    const component = shallow(<Cards {...props} />);
-    const namecard = findByTestAttr(component, "casesCount");
-    expect(namecard.length).toEqual(3);
+
+    render(<Cards {...props}/>)
+    // screen.debug()
+    //getAllByText return []
+    expect(screen.getAllByText(/人數/)).toHaveLength(3)
   });
+
+
   // test for 型別檢查
   describe("checking PropTypes", () => {
     it("should not throwing a warning", () => {
