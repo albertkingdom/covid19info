@@ -9,33 +9,31 @@ import Card from "./Card";
 import PropTypes from "prop-types";
 
 const Cards = (props) => {
-  // console.log("cards props", props);
-
   const date = new Date(props.data.lastUpdate); //更新時間
   const display = (
     <Container className={styles.cardContainer}>
-      <Row>
-        <Card
-          column={4}
-          country={props.country}
-          data={props.data.confirmed}
-          title="確診人數"
-        />
+      {/* <Row> */}
+      <Card
+        column={12}
+        country={props.country}
+        data={props.data.confirmed}
+        title="確診人數"
+      />
 
-        <Card
-          column={4}
-          country={props.country}
-          data={props.data.recovered}
-          title="復原人數"
-        />
+      <Card
+        column={12}
+        country={props.country}
+        data={props.data.recovered}
+        title="復原人數"
+      />
 
-        <Card
-          column={4}
-          country={props.country}
-          data={props.data.deaths}
-          title="死亡人數"
-        />
-      </Row>
+      <Card
+        column={12}
+        country={props.country}
+        data={props.data.deaths}
+        title="死亡人數"
+      />
+      {/* </Row> */}
     </Container>
   );
   return display;

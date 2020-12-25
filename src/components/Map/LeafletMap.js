@@ -12,8 +12,28 @@ const countryStyle = {
 
 const LeafletMap = ({ location, countrySelect }) => {
   const [clickCountryName, setClickCountryName] = useState("");
-  //   let center = [37.8, -96];
-  let center = location ? [location.lat, location.long] : [37.8, -96]; //設置地圖中心點座標
+  const [center, setCenter] = useState([37.8, -96]);
+
+  useEffect(() => {
+    function handleCenter() {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const { latitude, longitude } = position.coords;
+
+        const currentLocation = [latitude, longitude];
+
+        let center = location
+          ? [location.lat, location.long]
+          : currentLocation
+          ? currentLocation
+          : [37.8, -96];
+
+        setCenter(center);
+      });
+    }
+    handleCenter();
+  }, [location]);
+
+ 
 
   const mapRef = useRef(null);
   const onEachCountry = (country, layer, countrySelect) => {
@@ -35,8 +55,9 @@ const LeafletMap = ({ location, countrySelect }) => {
         const map = mapRef.current.leafletElement;
         // console.log(mapRef);
         map.fitBounds(event.target.getBounds()); //將click到的地區擺到正中央
+        // console.log(mapRef)
 
-        setClickCountryName(event.target.feature.properties.name);
+        // setClickCountryName(event.target.feature.properties.name);
       },
       mouseleave: (event) => {
         event.target.resetStyle(); //no effect?
@@ -45,12 +66,12 @@ const LeafletMap = ({ location, countrySelect }) => {
   };
 
   return (
-    <div className="container">
-      <h5 style={{ marginTop: "25px" }}>WHERE IS THE COUNTRY?</h5>
+    <div className="">
+      {/* <h5 style={{ marginTop: "25px" }}>WHERE IS THE COUNTRY?</h5> */}
       <Map
         center={center}
         zoom={3}
-        style={{ width: "100%", height: "300px", margin: "10px" }}
+        style={{ width: "100%", height: "600px"}}
         ref={mapRef}
       >
         <TileLayer

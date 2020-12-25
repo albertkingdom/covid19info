@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 import { Cards, Chart, CountryPicker } from "./components";
+import Carousel from "./components/Carousel/Carousel";
 import {
   fetchData,
   fetchHistoryData,
@@ -9,6 +10,7 @@ import {
   fetchCountriesName,
 } from "./api";
 import LeafletMap from "./components/Map/LeafletMap";
+
 export default function App() {
   const [data, setData] = useState({}); //傳給子元件的資料
   const [isloading, setIsloading] = useState(true);
@@ -81,19 +83,16 @@ export default function App() {
         country={country}
       />
 
-      {isloading ? (
-        <div>Loading...</div>
-      ) : (
-        <Cards data={data} country={country} />
-      )}
-      <main className="row">
-        <div className="col-12 col-md-6">
-          <Chart data={data} country={country} historyData={historyData} />
+      <main className="row justify-content-center align-items-center">
+        <div className="col-12 col-md-4 col-lg-3">
+          <Cards data={data} country={country} />
         </div>
+        <div className="col-10 col-md-8 col-lg-7">
+          <Carousel>
+            <LeafletMap countrySelect={country} location={location} />
 
-        {/* <World country={country} /> */}
-        <div className="col-12 col-md-6">
-          <LeafletMap countrySelect={country} location={location} />
+            <Chart data={data} country={country} historyData={historyData} />
+          </Carousel>
         </div>
       </main>
     </div>

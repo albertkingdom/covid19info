@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Line, Bar } from "react-chartjs-2";
 import Container from "react-bootstrap/Container";
 
@@ -35,8 +35,9 @@ const Chart = ({
         ],
       }}
       data-test="linePlot"
-      height={40}
-      width={50}
+      height={"90%"}
+      width={"100%"}
+      options={{ maintainAspectRatio: false }}
     />
   ) : null;
   const barChart = confirmed ? (
@@ -57,13 +58,18 @@ const Chart = ({
       }}
       options={{
         legend: { display: false },
+        maintainAspectRatio: false,
         // title: { display: true, text: `Current state in ${country}` }
       }}
-      height={40}
-      width={50}
+      height={90}
+      width={100}
     />
   ) : null;
-  return <Container>{country !== "Global" ? barChart : linechart}</Container>;
+  return (
+    <Container style={{ height: "600px", padding: "20px" }}>
+      {country !== "Global" ? barChart : linechart}
+    </Container>
+  );
 };
 
 export default Chart;

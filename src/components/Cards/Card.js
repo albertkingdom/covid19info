@@ -6,14 +6,14 @@ import styles from "./Cards.module.scss";
 
 export default function Card({ country, data, title }) {
   return (
-    <Col md={4}>
+    <Col md={12}>
       <div className={styles.infoCard}>
         <h5 className="">
           {country && country !== "Global" ? country : "全球"}
           {title}
         </h5>
         <div className={styles.digit}>
-          <CountUp start={0} end={data.value} separator="," />
+          {data && <CountUp start={0} end={data.value} separator="," />}
         </div>
       </div>
     </Col>
